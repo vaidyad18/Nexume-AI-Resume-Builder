@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
+const API_KEY = '3e085e0d7c3ec083af992ca7c708806025e9fe78979c1b73e76f9dfa1b921be18f8aade5a422b091005b148684004a8e8d8c46a7b10cb0deec07223f2486cf55aa62cb760ae7ebbd9a9747dda3e3d2055c89fe958bab039d495d62492d8d84038b13b78c0a217a8bd254f728d52f1eb59b869a6eb125e9d926e96d6840804d00';
 const axiosClient = axios.create({
     baseURL: 'https://nexume-strapi-admin.onrender.com/api',
     headers: {
