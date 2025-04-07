@@ -16,21 +16,21 @@ const Theme = () => {
     "#3357FF",
     "#FF33A1",
     "#A133FF",
-    "#33FFA1",
-    "#FF7133",
-    "#71FF33",
-    "#7133FF",
-    "#FF3371",
-    "#33FF71",
-    "#3371FF",
-    "#A1FF33",
-    "#33A1FF",
-    "#FF5733",
-    "#5733FF",
-    "#33FF5A",
-    "#5A33FF",
+    "#000000",
+    "#E52020",
+    "#FBA518",
+    "#C68EFD",
+    "#328E6E",
+    "#4E1F00",
+    "#60B5FF",
+    "#410445",
+    "#00879E",
+    "#F9CB43",
+    "#9AA6B2",
+    "#7D1C4A",
+    "#96CEB4",
     "#FF335A",
-    "#335AFF",
+    "#5F4E9E",
   ];
 
   const{resumeInfo, setResumeInfo}=useContext(ResumeInfoContext)
@@ -73,7 +73,7 @@ const Theme = () => {
           {colors.map((item, i) => (
             <div
             onClick={()=>onColorSelect(item)}
-              className={`w-8 h-8 rounded-full ${selectedColour==item && 'border-2 border-black'}`}
+              className={`w-8 hover:scale-110 duration-150 cursor-pointer h-8 rounded-full ${selectedColour==item && 'border-2 border-black'}`}
               style={{ background: item }}
             ></div>
           ))}

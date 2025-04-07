@@ -1,7 +1,7 @@
 import React from "react";
 
 const Skills = ({ resumeInfo }) => {
-  return resumeInfo?.education && resumeInfo.education.length > 0 ? (
+  return resumeInfo?.skill && resumeInfo.skill.length > 0 ? (
     <div className="mb-5">
       <p className=" text-lg font-bold" style={{ color: resumeInfo?.theme }}>
         Skills

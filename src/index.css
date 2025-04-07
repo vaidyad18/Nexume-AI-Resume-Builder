@@ -29,6 +29,7 @@
 }
 
 @theme {
+  --breakpoint-xsm:450px;
   --breakpoint-xs:24rem;
 }
 
@@ -38,9 +39,31 @@
 }
 
 .cl-avatarBox {
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 33px;
+  height: 33px;
 }
+
+@media (min-width: 640px) {
+  .cl-avatarBox {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cl-avatarBox {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cl-avatarBox {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 
 @custom-variant dark (&:is(.dark *));
 

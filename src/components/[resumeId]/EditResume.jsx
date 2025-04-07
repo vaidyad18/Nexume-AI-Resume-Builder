@@ -22,7 +22,7 @@ const EditResume = () => {
 
   return (
     <ResumeInfoContext.Provider value={{resumeInfo,setResumeInfo}}>
-      <div className="grid  grid-cols-1 lg:grid-cols-2 px-5 pb-8 gap-10">
+      <div className="grid  grid-cols-1 lg:grid-cols-2 px-5 min-h-screen pb-8 gap-10">
         <FormSection />
         <PreviewSection />
       </div>
