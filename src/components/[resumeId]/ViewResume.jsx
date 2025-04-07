@@ -29,15 +29,15 @@ const ViewResume = () => {
         <div id="noprint">
           <Header />
           <div>
-            <p className="text-center text-white pt-6 font-semibold text-xl">
+            <p className="text-center text-[10px] xs:text-[14px]  sm:text-[20px] text-white pt-6 font-semibold text-xl">
               Congratulations 🥳 Your AI generated Resume is ready ✅
             </p>
-            <p className="text-center text-md text-gray-300">
+            <p className="text-center text-[10px] xs:text-xs sm:text-lg text-gray-300">
               Now you are ready to download your resume.
             </p>
             <div className="flex py-6 items-center justify-center gap-10">
               <button
-                className="flex bg-blue-500 hover:bg-blue-600 duration-150 cursor-pointer disabled:bg-blue-300 text-white font-semibold gap-2 py-[6px] px-3 rounded-sm justify-center items-center"
+                className="flex bg-blue-500 text-[10px] xs:text-[14px]  sm:text-[16px] hover:bg-blue-600 duration-150 cursor-pointer disabled:bg-blue-300 text-white font-semibold gap-2 py-[6px] px-3 rounded-sm justify-center items-center"
                 onClick={handleDownload}
               >
                 Download

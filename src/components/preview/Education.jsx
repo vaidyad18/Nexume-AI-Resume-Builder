@@ -3,7 +3,7 @@ import React from "react";
 const Education = ({ resumeInfo }) => {
   return resumeInfo?.education && resumeInfo.education.length > 0 ? (
     <div className="mt-5 mb-1">
-      <p className=" text-lg font-bold" style={{ color: resumeInfo?.theme }}>
+      <p className="text-md sm:text-lg font-bold" style={{ color: resumeInfo?.theme }}>
         Education
       </p>
       <hr
@@ -15,16 +15,16 @@ const Education = ({ resumeInfo }) => {
           <div className="flex justify-between">
             <p
               style={{ color: resumeInfo?.theme }}
-              className="text-left text-sm font-bold"
+              className="text-left text-xs sm:text-sm font-bold"
             >
               {edu?.universityName}, {edu?.state}
             </p>
-            <p className="text-[12px] font-semibold ">
+            <p className="sm:text-[12px] text-[10px] font-semibold ">
               {edu?.startDate ? edu?.startDate : ""}
               {edu?.endDate ? `- ${edu?.endDate}` : "- Present"}
             </p>
           </div>
-          <p className="text-xs text-left font-semibold">
+          <p className="sm:text-xs text-[10px] text-left font-semibold">
             {edu?.degree}
             {edu?.major ? " in " + edu?.major : ""}
           </p>

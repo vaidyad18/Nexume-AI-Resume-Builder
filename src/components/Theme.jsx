@@ -71,7 +71,7 @@ const Theme = () => {
         <div className="grid grid-cols-5 gap-y-2">
             
           {colors.map((item, i) => (
-            <div
+            <div key={i}
             onClick={()=>onColorSelect(item)}
               className={`w-8 hover:scale-110 duration-150 cursor-pointer h-8 rounded-full ${selectedColour==item && 'border-2 border-black'}`}
               style={{ background: item }}

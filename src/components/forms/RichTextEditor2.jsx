@@ -50,17 +50,17 @@ const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
   return (
     <div>
       <div className="flex justify-between items-end mb-3">
-        <p className="font-semibold text-sm">Project Summary</p>
+        <p className="font-semibold text-xs sm:text-sm">Project Summary</p>
 
         <button
           onClick={generateSummaryFromAI}
-          className="flex text-sm justify-center items-center border-[2px] font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2 "
+          className="flex text-xs sm:text-sm justify-center items-center border-[2px] font-semibold hover:bg-gray-100 cursor-pointer border-gray-300 py-[6px] rounded-md px-3 gap-2 "
         >
           {loading ? (
             <Loader2 className="animate-spin" />
           ) : (
             <div className="flex items-center justify-center gap-2">
-              <Brain className="w-4 h-4" /> <p>Generate from AI</p>
+              <Brain className="sm:w-4 w-3 h-3 sm:h-4" /> <p className="text-sm sm:text-[16px]">Generate from AI</p>
             </div>
           )}
         </button>
@@ -78,7 +78,6 @@ const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
             <BtnItalic />
             <BtnUnderline />
             <BtnBulletList />
-            <BtnNumberedList />
             <BtnUndo />
             <BtnRedo />
           </Toolbar>

@@ -61,15 +61,15 @@ const SummaryForm = () => {
       className="py-5 bg-white px-10 shadow-xl rounded-xl border-t-[15px] mt-4 -mb-4"
       style={{ borderColor: "#2b7fff" }}
     >
-      <p className="font-bold text-2xl">Summary</p>
+      <p className="font-bold text-xl sm:text-2xl">Summary</p>
 
       <div className="flex justify-between gap-2 items-center">
-        <p className="text-gray-600 text-sm mt-1">
+        <p className="text-gray-600 text-xs sm:text-sm mt-1">
           Add your summary according to your Job Title.
         </p>
         <button
           onClick={() => GenerateSummaryFromAI()}
-          className="flex text-sm justify-center items-center border-[2px] font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2 "
+          className="flex text-xs sm:text-sm justify-center hover:bg-gray-100 cursor-pointer items-center border-[2px] font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2 "
         >
           <Brain className="xs:w-4 w-7 h-7 xs:h-4"/> <p>Generate from AI</p>
         </button>
@@ -77,7 +77,7 @@ const SummaryForm = () => {
       <div>
         <form onSubmit={onSave}>
           <Textarea
-            className="my-5"
+            className="my-5 text-sm sm:text-[16px]"
             required
             defaultValue={resumeInfo?.summary}
             value={summary}
@@ -87,7 +87,7 @@ const SummaryForm = () => {
             <button
               disabled={loading}
               type="submit"
-              className=" bg-blue-500 text-white font-semibold hover:bg-blue-600 cursor-pointer duration-150 py-[6px] px-8 rounded-sm"
+              className=" bg-blue-500  text-sm sm:text-[16px] text-white font-semibold hover:bg-blue-600 cursor-pointer duration-150 py-[6px] px-8 rounded-sm"
             >
               {loading ? <Loader2 className="animate-spin" /> : "Save"}
             </button>
@@ -96,7 +96,7 @@ const SummaryForm = () => {
       </div>
       {aiSummaryList && (
         <div className="my-4">
-          <p className="font-bold text-xl ">Suggestions from AI</p>
+          <p className="font-bold text-lg xs:text-xl ">Suggestions from AI</p>
           {aiSummaryList.map((item, i) => (
             <div
               onClick={(event) => {
@@ -110,14 +110,14 @@ const SummaryForm = () => {
               key={i}
             >
               <div className="flex">
-                <p className="font-semibold text-green-600 text-md">
+                <p className="font-semibold text-green-600 text-sm sm:text-md">
                   Level:&nbsp;{" "}
                 </p>
-                <p className="text-md font-semibold">
+                <p className="sm:text-md text-sm font-semibold">
                   {item?.experience_level}
                 </p>
               </div>
-              <p className="text-md mt-1">{item?.summary}</p>
+              <p className="text-sm sm:text-md mt-1">{item?.summary}</p>
             </div>
           ))}
         </div>
