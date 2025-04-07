@@ -10,7 +10,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import EditResume from "./components/[resumeId]/EditResume";
 import ViewResume from "./components/[resumeId]/ViewResume";
 
-const PUBLISHABLE_KEY = sk_test_Bz9MDhkqqjgQpXNMIJYPm5iAFX4Z05QIR7vIOVwLXs
+const PUBLISHABLE_KEY = pk_test_c2ltcGxlLW9hcmZpc2gtNzUuY2xlcmsuYWNjb3VudHMuZGV2JA
 const router = createBrowserRouter([
   {
     element: <App />,
