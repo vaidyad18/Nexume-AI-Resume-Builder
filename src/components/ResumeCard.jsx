@@ -65,7 +65,7 @@ const ResumeCard = ({ resume, refreshData }) => {
       >
         <p
           className={`xs:text-sm text-xs capitalize font-semibold xs:w-24 w-20 sm:w-full text-left xs:py-2 ${
-            ["black", "#410445", "#4E1F00"].includes(resume?.theme)
+            ["#000000", "#410445", "#4E1F00"].includes(resume?.theme)
               ? "text-white"
               : ""
           }`}
@@ -77,7 +77,7 @@ const ResumeCard = ({ resume, refreshData }) => {
           <DropdownMenuTrigger>
             <MoreVerticalIcon
               className={`w-4 cursor-pointer h-4 ${
-                ["black", "#410445", "#4E1F00"].includes(resume?.theme)
+                ["#000000", "#410445", "#4E1F00"].includes(resume?.theme)
                   ? "text-white"
                   : ""
               }`}
