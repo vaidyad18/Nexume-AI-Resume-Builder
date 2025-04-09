@@ -179,7 +179,7 @@ const ExperienceForm = () => {
             className="flex text-xs sm:text-sm justify-center items-center border-[2px] hover:bg-gray-100 duration-150 cursor-pointer text-blue-500 font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2"
           >
             <i className="fa-solid fa-plus"></i>
-            <p>Add More Experience</p>
+            <p>Add Experience</p>
           </button>
           {experienceList.length > 0 && (
             <button

@@ -1,41 +1,56 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-.rsw-ce ul{
+.rsw-ce ul {
   list-style: disc;
   padding-left: 1.5em;
 }
-.rsw-ce ol{
+.rsw-ce ol {
   list-style: decimal;
   padding-left: 1.5em;
 }
 
-@theme {  
+@theme {
   --font-lexend: "Lexend Giga", "sans-serif";
   --font-saira: "Saira", "sans-serif";
 }
 
-@media print{
-  #noprint{
-    display: none;
+@media print {
+  #noprint {
+    display: none !important;
   }
-  #print{
-    display: block;
+
+  #print {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
   }
-  body{
-    margin: 0;
-    padding: 0;
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    overflow: hidden;
   }
+
+  * {
+    box-shadow: none !important;
+    background: none !important;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
 }
 
 @theme {
-  --breakpoint-xsm:450px;
-  --breakpoint-xs:24rem;
-}
-
-@page{
-  size: auto;
-  margin: 0mm;
+  --breakpoint-xsm: 450px;
+  --breakpoint-xs: 24rem;
 }
 
 .cl-avatarBox {
@@ -63,7 +78,6 @@
     height: 44px;
   }
 }
-
 
 @custom-variant dark (&:is(.dark *));
 

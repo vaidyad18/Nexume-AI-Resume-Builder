@@ -21,7 +21,7 @@ const Projects = ({ resumeInfo }) => {
           </p>
           <p className="text-left text-[10px] sm:text-xs font-semibold">{proj?.techUsed}</p>
           <div
-            className="text-left mt-1 text-[10px] sm:text-xs list-disc list-inside"
+            className="text-left mt-1 text-[10px] sm:text-xs list-disc list-outside"
             dangerouslySetInnerHTML={{ __html: proj?.projectSummary }}
           ></div>
         </div>

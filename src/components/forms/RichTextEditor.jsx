@@ -17,7 +17,16 @@ import { AIChatSession } from "./../../../service/AIModel";
 import { toast } from "sonner";
 
 const PROMPT =
-  "position title: {workTitle},depends on position tile, give me 3-4 bullet points in medium for my experience in resume,give me result in HTML tag.";
+  `position title: {workTitle},depends on position tile, give me 3-4 bullet points in medium for my experience in resume,give me result in HTML tag.
+  Give result in this format:
+ny json { "resume_points_html": [ "
+(point)
+", "
+(point)
+", "
+(point)
+" ] } 
+  `;
 const RichTextEditor = ({ onrichTextEditorChange, index, defaultValue }) => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [value, setValue] = useState(defaultValue);
@@ -27,7 +36,7 @@ const RichTextEditor = ({ onrichTextEditorChange, index, defaultValue }) => {
     setLoading(true);
     if (!resumeInfo?.experience[index].workTitle) {
       toast("Please Add Position Title");
-      setLoading(false)
+      setLoading(false);
       return;
     }
     const prompt = PROMPT.replace(
@@ -35,8 +44,10 @@ const RichTextEditor = ({ onrichTextEditorChange, index, defaultValue }) => {
       resumeInfo?.experience[index].workTitle
     );
     const result = await AIChatSession.sendMessage(prompt);
-    const response = result.response.text();
-    setValue(response.replace(/["\[\]{},]/g, ""));
+
+    const responseText = await result.response.text();
+
+    setValue(responseText.trim());
     setLoading(false);
   };
   return (
@@ -52,7 +63,8 @@ const RichTextEditor = ({ onrichTextEditorChange, index, defaultValue }) => {
             <Loader2 className="animate-spin" />
           ) : (
             <div className="flex items-center justify-center gap-2">
-              <Brain className="sm:w-4 w-3 h-3 sm:h-4" /> <p className="text-sm sm:text-[16px]">Generate from AI</p>
+              <Brain className="sm:w-4 w-3 h-3 sm:h-4" />{" "}
+              <p className="text-sm sm:text-[16px]">Generate from AI</p>
             </div>
           )}
         </button>

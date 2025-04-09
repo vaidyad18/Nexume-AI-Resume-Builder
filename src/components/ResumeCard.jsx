@@ -63,11 +63,25 @@ const ResumeCard = ({ resume, refreshData }) => {
         style={{ backgroundColor: resume?.theme }}
         className=" flex justify-between px-3 py-1 items-center rounded-br-lg shadow-lg rounded-bl-lg"
       >
-        <p className="xs:text-sm text-xs capitalize font-semibold xs:w-24 w-20 sm:w-full text-left xs:py-2">{resume.title}</p>
+        <p
+          className={`xs:text-sm text-xs capitalize font-semibold xs:w-24 w-20 sm:w-full text-left xs:py-2 ${
+            ["black", "#410445", "#4E1F00"].includes(resume?.theme)
+              ? "text-white"
+              : ""
+          }`}
+        >
+          {resume.title}
+        </p>
 
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <MoreVerticalIcon className="w-4 cursor-pointer h-4" />
+            <MoreVerticalIcon
+              className={`w-4 cursor-pointer h-4 ${
+                ["black", "#410445", "#4E1F00"].includes(resume?.theme)
+                  ? "text-white"
+                  : ""
+              }`}
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <Link to={"/dashboard/" + resume.documentId + "/edit-resume"}>
@@ -95,10 +109,17 @@ const ResumeCard = ({ resume, refreshData }) => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="cursor-pointer" onClick={() => setOpenAlert(false)}>
+              <AlertDialogCancel
+                className="cursor-pointer"
+                onClick={() => setOpenAlert(false)}
+              >
                 Cancel
               </AlertDialogCancel>
-              <AlertDialogAction className="bg-blue-500 duration-150 hover:bg-blue-600 cursor-pointer" disabled={loading} onClick={onDelete}>
+              <AlertDialogAction
+                className="bg-blue-500 duration-150 hover:bg-blue-600 cursor-pointer"
+                disabled={loading}
+                onClick={onDelete}
+              >
                 {loading ? <Loader2 className="animate-spin" /> : "Delete"}
               </AlertDialogAction>
             </AlertDialogFooter>

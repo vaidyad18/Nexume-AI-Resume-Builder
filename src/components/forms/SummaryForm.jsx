@@ -8,8 +8,31 @@ import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { AIChatSession } from "./../../../service/AIModel";
 
-const prompt =
-  "Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 2-3 lines in array format, With summery and experience_level Field in JSON Format";
+const prompt = `
+Job Title: {jobTitle}
+
+Generate a list of 3 summaries for different experience levels: "Fresher", "Mid Level", and "Experienced".
+Each summary should be 2-3 lines long.
+
+Respond **ONLY** with a JSON array using this format:
+
+[
+  {
+    "experience_level": "Fresher",
+    "summary": "..."
+  },
+  {
+    "experience_level": "Mid Level",
+    "summary": "..."
+  },
+  {
+    "experience_level": "Experienced",
+    "summary": "..."
+  }
+]
+Do not include any explanation, heading, or extra characters.
+`;
+
 const SummaryForm = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [loading, setLoading] = useState(false);
@@ -24,13 +47,30 @@ const SummaryForm = () => {
         summary: summary,
       });
   }, [summary]);
-  
+
   const GenerateSummaryFromAI = async () => {
-    setLoading(true);
-    const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
-    const result = await AIChatSession.sendMessage(PROMPT);
-    setAiSummaryList(JSON.parse(result.response.text()));
-    setLoading(false);
+    try {
+      setLoading(true);
+      const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
+      const result = await AIChatSession.sendMessage(PROMPT);
+      const text = result.response.text().trim();
+      const jsonStartIndex = text.indexOf("[");
+      const jsonEndIndex = text.lastIndexOf("]") + 1; 
+      if (jsonStartIndex === -1 || jsonEndIndex === -1) {
+        throw new Error("Could not find JSON array in the response.");
+      }
+      const cleanJson = text.slice(jsonStartIndex, jsonEndIndex);
+      const parsed = JSON.parse(cleanJson);
+      if (!Array.isArray(parsed)) {
+        throw new Error("Parsed content is not an array.");
+      }
+      setAiSummaryList(parsed);
+    } catch (error) {
+      console.error("Error parsing AI response:", error);
+      toast.error("⚠️ Failed to parse AI summary. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onSave = (e) => {
@@ -71,7 +111,7 @@ const SummaryForm = () => {
           onClick={() => GenerateSummaryFromAI()}
           className="flex text-xs sm:text-sm justify-center hover:bg-gray-100 cursor-pointer items-center border-[2px] font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2 "
         >
-          <Brain className="xs:w-4 w-7 h-7 xs:h-4"/> <p>Generate from AI</p>
+          <Brain className="xs:w-4 w-7 h-7 xs:h-4" /> <p>Generate from AI</p>
         </button>
       </div>
       <div>
@@ -101,7 +141,7 @@ const SummaryForm = () => {
             <div
               onClick={(event) => {
                 const clickedPTag =
-                  event.currentTarget.querySelector("p.text-md.mt-1");
+                  event.currentTarget.querySelector("p.text-sm.mt-1");
                 if (clickedPTag) {
                   setSummary(clickedPTag.innerText);
                 }

@@ -124,7 +124,7 @@ const ProjectForm = () => {
             className="flex text-xs sm:text-sm hover:bg-gray-100 duration-150 cursor-pointer justify-center items-center border-[2px] text-blue-500 font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2"
           >
             <i className="fa-solid fa-plus"></i>
-            <p>Add More Project</p>
+            <p>Add Project</p>
           </button>
           {projectList.length > 0 && (
             <button

@@ -5,7 +5,6 @@ import {
   BtnBold,
   BtnBulletList,
   BtnItalic,
-  BtnNumberedList,
   BtnRedo,
   BtnUnderline,
   BtnUndo,
@@ -16,8 +15,16 @@ import {
 import { AIChatSession } from "./../../../service/AIModel";
 import { toast } from "sonner";
 
-const PROMPT =
-  "project name: {projectName} and tech used: {techUsed}, depending on project name and tech used, give me 3-4 bullet points in medium for my project in resume,give me result in HTML tag.";
+const PROMPT = `project name: {projectName} and tech used: {techUsed}, depending on project name and tech used, give me 3-4 bullet points in medium for my project in resume,give me result in HTML tag.
+Give result in this format:
+ny json { "resume_points_html": [ "
+(point)
+", "
+(point)
+", "
+(point)
+" ] } 
+  `;
 const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [value, setValue] = useState(defaultValue);
@@ -25,6 +32,7 @@ const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
 
   const generateSummaryFromAI = async () => {
     setLoading(true);
+
     if (!resumeInfo?.project[index].projectName) {
       toast("Please Add Project Name");
       setLoading(false);
@@ -36,17 +44,19 @@ const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
       setLoading(false);
       return;
     }
-    
+
     const prompt = PROMPT.replace(
       "{projectName}",
       resumeInfo?.project[index].projectName
     ).replace("{techUsed}", resumeInfo?.project[index].techUsed);
 
     const result = await AIChatSession.sendMessage(prompt);
-    const response = result.response.text();
-    setValue(response.replace(/["\[\]{},]/g, ""));
+    const responseText = await result.response.text();
+    console.log(responseText)
+    setValue(responseText.trim());
     setLoading(false);
   };
+
   return (
     <div>
       <div className="flex justify-between items-end mb-3">
@@ -60,7 +70,8 @@ const RichTextEditor2 = ({ onrichTextEditorChange2, index, defaultValue }) => {
             <Loader2 className="animate-spin" />
           ) : (
             <div className="flex items-center justify-center gap-2">
-              <Brain className="sm:w-4 w-3 h-3 sm:h-4" /> <p className="text-sm sm:text-[16px]">Generate from AI</p>
+              <Brain className="sm:w-4 w-3 h-3 sm:h-4" />{" "}
+              <p className="text-sm sm:text-[16px]">Generate from AI</p>
             </div>
           )}
         </button>
