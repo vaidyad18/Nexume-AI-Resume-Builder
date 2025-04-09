@@ -60,7 +60,7 @@ const ResumeCard = ({ resume, refreshData }) => {
         </div>
       </Link>
       <div
-        style={{ backgroundColor: resume?.theme }}
+        style={{ backgroundColor: resume?.theme ?? 'white' }}
         className=" flex justify-between px-3 py-1 items-center rounded-br-lg shadow-lg rounded-bl-lg"
       >
         <p

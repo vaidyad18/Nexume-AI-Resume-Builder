@@ -1,9 +1,10 @@
-import { Loader2, PlusSquare } from "lucide-react";
+import { Loader2, PlusSquare, RabbitIcon, XIcon } from "lucide-react";
 import React from "react";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -13,13 +14,14 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/clerk-react";
 import GlobalApi from "./../../service/GlobalApi";
 import { useNavigate } from "react-router-dom";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 const AddResume = () => {
   const { user } = useUser();
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const [loading, setLoading] = useState(false);
-  const navigation=useNavigate()
+  const navigation = useNavigate();
 
   const onCreate = async () => {
     setLoading(true);
@@ -35,7 +37,9 @@ const AddResume = () => {
       (response) => {
         if (response) {
           setLoading(false);
-          navigation('/dashboard/'+response.data.data.documentId+'/edit-resume')
+          navigation(
+            "/dashboard/" + response.data.data.documentId + "/edit-resume"
+          );
         }
       },
       (error) => {
@@ -44,11 +48,11 @@ const AddResume = () => {
     );
   };
 
-  const handleEnter=(e)=>{
-    if(e.key==='Enter'){
-      onCreate()
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      onCreate();
     }
-  }
+  };
 
   return (
     <div>
@@ -56,11 +60,16 @@ const AddResume = () => {
         className="cursor-pointer hover:scale-105 duration-200 flex sm:py-28 px-[45px] py-[70px] xs:px-[58px] xs:py-20 sm:px-20 rounded-lg border-dashed border-gray-400 shadow-xl border-2 justify-center bg-black "
         onClick={() => setOpenDialog(true)}
       >
-        <PlusSquare className="invert"/>
+        <PlusSquare className="invert" />
       </div>
       <Dialog open={openDialog}>
-        <DialogTrigger></DialogTrigger>
-        <DialogContent>
+        <DialogContent className="[&>button]:hidden">
+          <DialogClose asChild={true}>
+            <XIcon
+              className="flex w-5 -mb-8 cursor-pointer -mt-4 -mr-3 justify-self-end"
+              onClick={() => setOpenDialog(!openDialog)}
+            />
+          </DialogClose>
           <DialogHeader>
             <DialogTitle>Create new Resume</DialogTitle>
             <DialogDescription>
