@@ -37,32 +37,10 @@
 
 ---
 
-## 🔧 Getting Started
+## 🔗 Live Demo
 
-Follow these steps to get Nexume running locally on your machine.
+Check out the deployed project here: [Nexume - Next Gen Resume](https://nexume-ai.vercel.app/)
 
----
+> Experience the power of AI-assisted resume building in real-time!
 
-### ✅ Prerequisites
-
-Ensure the following are installed:
-
-- [Node.js](https://nodejs.org/) (v18 or later)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
-- [Strapi CLI](https://docs.strapi.io/dev-docs/cli/installation)
-
----
-
-### 🚀 Installation Steps
-
-#### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/nexume.git
-cd nexume
-
-npm install
-# or
-yarn install
 
