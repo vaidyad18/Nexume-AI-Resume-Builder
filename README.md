@@ -1,6 +1,6 @@
 # 🚀 Nexume - Next Gen Resume
 
-**Nexume** is an AI-powered resume builder designed to help users craft stunning, professional, and personalized resumes effortlessly. Built using modern technologies like **ReactJS**, **Tailwind CSS**, **Clerk** for authentication, **Strapi** for CMS/backend, and **Gemini AI** for intelligent content generation and resume optimization.
+**Nexume** is an AI-powered resume builder designed to help users craft stunning, professional, and personalized resumes effortlessly. Built using modern technologies like **ReactJS**, **Tailwind CSS**, **Shadcn**, **Clerk** for authentication, **Strapi** for CMS/backend, and **Gemini AI** for intelligent content generation and resume optimization.
 
 ---
 
@@ -31,11 +31,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> Coming soon...
-
----
 
 ## 🔗 Live Demo
 
