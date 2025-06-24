@@ -14,11 +14,21 @@ const Dashboard = () => {
   }, [user])
   
 
-  const GetResumeList=()=>{
-    GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(response=>{
-      setResumeList(response.data.data)
-    })
-  }
+  const GetResumeList = () => {
+  GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(response => {
+    const data = response?.data?.data;
+    if (Array.isArray(data)) {
+      setResumeList(data);
+    } else {
+      setResumeList([]); // fallback if response is not in expected format
+    }
+  }).catch((error) => {
+    console.error("Failed to fetch resumes:", error);
+    setResumeList([]); // also fallback on error
+  });
+};
+
+
   return (
     <div className="lg:px-36 px-5 min-h-screen xs:px-8 sm:px-20 -mt-4 xs:-mt-0 py-8">
       <p className="sm:text-3xl text-xl xs:text-2xl font-bold text-white">My Resume</p>
