@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 const PersonalDetailForm = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
@@ -57,21 +57,16 @@ const PersonalDetailForm = () => {
     setLoading(true);
 
     const data = {
-      data: formData,
+      data: formData
     };
+console.log("Payload:", JSON.stringify(data, null, 2));
 
     GlobalApi.UpdateResumeDetail(data, params?.resumeId)
       .then((response) => {
         setLoading(false);
         toast("Details updated. ✅");
       })
-      .catch((error) => {
-        setLoading(false);
-        console.error(
-          "Error updating resume:",
-          error.response?.data || error.message
-        );
-      });
+      
   };
 
   return (
@@ -99,14 +94,14 @@ const PersonalDetailForm = () => {
             />
           </div>
           <div className="flex-col">
-            <label className="font-semibold capitalize text-xs sm:text-sm">Last Name *</label>
+            <label className="font-semibold  text-xs sm:text-sm">Last Name *</label>
             <input
               required
               name="lastName"
               defaultValue={resumeInfo?.lastName}
               onChange={handleInputChange}
               placeholder="Williams"
-              className="w-full bg-gray-100 outline rounded-sm text-sm sm:text-[16px] py-2 px-3 mt-1"
+              className="w-full bg-gray-100 capitalize outline rounded-sm text-sm sm:text-[16px] py-2 px-3 mt-1"
               type="text"
               id=""
             />
@@ -154,8 +149,8 @@ const PersonalDetailForm = () => {
             <label className="font-semibold text-xs sm:text-sm">Email ID *</label>
             <input
               required
-              name="email"
-              defaultValue={resumeInfo?.email}
+              name="userMail"
+              defaultValue={resumeInfo?.userMail}
               onChange={handleInputChange}
               placeholder="example@gmail.com"
               className="w-full bg-gray-100 outline text-sm sm:text-[16px] rounded-sm py-2 px-3 mt-1"

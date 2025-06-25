@@ -20,11 +20,11 @@ const Dashboard = () => {
     if (Array.isArray(data)) {
       setResumeList(data);
     } else {
-      setResumeList([]); // fallback if response is not in expected format
+      setResumeList([]);
     }
   }).catch((error) => {
     console.error("Failed to fetch resumes:", error);
-    setResumeList([]); // also fallback on error
+    setResumeList([]);
   });
 };
 

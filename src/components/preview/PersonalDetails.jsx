@@ -4,12 +4,12 @@ const PersonalDetails = ({ resumeInfo }) => {
   return (
     <div>
       <h1
-        className="text-xl sm:text-2xl -mt-2 font-bold"
+        className="text-xl capitalize sm:text-2xl -mt-2 font-bold"
         style={{ color: resumeInfo?.theme }}
       >
         {resumeInfo?.firstName} {resumeInfo?.lastName}
       </h1>
-      <p className="font-semibold sm:text-[16px] text-sm">{resumeInfo?.jobTitle}</p>
+      <p className="font-semibold capitalize sm:text-[16px] text-sm">{resumeInfo?.jobTitle}</p>
       <p
         className="text-[10px] sm:text-xs font-semibold mt-1"
         style={{ color: resumeInfo?.theme }}
@@ -21,7 +21,7 @@ const PersonalDetails = ({ resumeInfo }) => {
           {resumeInfo?.phone}
         </p>
         <p className="text-[8px] xsm:text-[10px] sm:text-xs" style={{ color: resumeInfo?.theme }}>
-          {resumeInfo?.email}
+           <a href={`mailto:${resumeInfo?.email}`} target="_blank">{resumeInfo?.userMail}</a>
         </p>
       </div>
       {resumeInfo?.linkedin || resumeInfo?.github || resumeInfo?.website ? (

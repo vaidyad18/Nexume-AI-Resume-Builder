@@ -4,7 +4,7 @@ export default{
     jobTitle:'Software Engineer',
     address:'XYZ Toronto, Canada',
     phone:'(987)-654-3210',
-    email:'example@gmail.com',
+    userMail:'example@gmail.com',
     theme:'#ff6666',
     summary:'A skilled software engineer specializing in designing, developing, and optimizing scalable applications and passionate about problem-solving, innovation, and leveraging technology to create impactful solutions.',
     experience:[
