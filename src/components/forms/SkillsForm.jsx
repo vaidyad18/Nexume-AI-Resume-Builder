@@ -11,7 +11,7 @@ const SkillsForm = () => {
   const [skillList, setSkillList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  const { resumeId } = useParams();
+  const params = useParams();
 
   const addNewSkill = () => {
     setSkillList([
@@ -42,12 +42,12 @@ const SkillsForm = () => {
       },
     };
 
-    GlobalApi.UpdateResumeDetail(data, resumeId)
-      .then((response) => {
+    GlobalApi.UpdateResumeDetail(data, params?.resumeId)
+      .then(() => {
         setLoading(false);
         toast("Details updated. ✅");
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
       });
   };

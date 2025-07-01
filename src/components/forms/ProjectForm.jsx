@@ -60,11 +60,11 @@ const ProjectForm = () => {
     };
 
     GlobalApi.UpdateResumeDetail(data, params?.resumeId)
-      .then((response) => {
+      .then(() => {
         setLoading(false);
         toast("Details updated. ✅");
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
       });
   };

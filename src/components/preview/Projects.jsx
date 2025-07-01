@@ -11,7 +11,7 @@ const Projects = ({ resumeInfo }) => {
         style={{ borderColor: resumeInfo?.theme }}
       />
 
-      {resumeInfo.project.map((proj, index) => (
+      {resumeInfo?.project.map((proj, index) => (
         <div className="my-4" key={index}>
           <p
             style={{ color: resumeInfo?.theme }}
