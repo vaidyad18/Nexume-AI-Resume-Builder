@@ -55,7 +55,7 @@ const SummaryForm = () => {
       const result = await AIChatSession.sendMessage(PROMPT);
       const text = result.response.text().trim();
       const jsonStartIndex = text.indexOf("[");
-      const jsonEndIndex = text.lastIndexOf("]") + 1; 
+      const jsonEndIndex = text.lastIndexOf("]") + 1;
       if (jsonStartIndex === -1 || jsonEndIndex === -1) {
         throw new Error("Could not find JSON array in the response.");
       }
@@ -96,6 +96,8 @@ const SummaryForm = () => {
       });
   };
 
+  
+
   return (
     <div
       className="py-5 bg-white px-10 shadow-xl rounded-xl border-t-[15px] mt-4 -mb-4"
@@ -108,8 +110,14 @@ const SummaryForm = () => {
           Add your summary according to your Job Title.
         </p>
         <button
+          disabled={loading}
           onClick={() => GenerateSummaryFromAI()}
-          className="flex text-xs sm:text-sm justify-center hover:bg-gray-100 cursor-pointer items-center border-[2px] font-semibold border-gray-300 py-[6px] rounded-md px-3 gap-2 "
+          className={`flex text-xs sm:text-sm justify-center items-center border-[2px] font-semibold py-[6px] rounded-md px-3 gap-2 
+              ${
+                loading
+                  ? "bg-gray-200 cursor-not-allowed"
+                  : "hover:bg-gray-100 cursor-pointer border-gray-300"
+              }`}
         >
           <Brain className="xs:w-4 w-7 h-7 xs:h-4" /> <p>Generate from AI</p>
         </button>
